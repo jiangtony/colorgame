@@ -4,8 +4,6 @@ var winningIndex = newWinningColor();
 var messageDisplay = document.getElementById("resultmessage");
 var winnerHeader = document.getElementById("winningcolor");
 var resetButton = document.querySelector("#resetBtn");
-var easyButton = document.querySelector("#easyBtn");
-var hardButton = document.querySelector("#hardBtn");
 var modeButtons = document.querySelectorAll(".modeBtns");
 var hardMode = true;
 
