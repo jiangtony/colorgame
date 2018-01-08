@@ -1,10 +1,11 @@
 body {
 	background-color: #333333;
+	margin: 0;
 }
 
 #container {
 	max-width: 60%;
-	margin: 0 auto;
+	margin: 20px auto;
 }
 .square {
 	width: 30%;
@@ -12,28 +13,68 @@ body {
 	padding-bottom: 30%;
 	float: left;
 	margin: 1.66%;
+	border-radius: 10%;
+	transition: background 0.7s;
+	-webkit-transition: background 0.7s;
+	-moz-transition: background 0.7s;
 }
 
 h1 {
 	color: white;
 	text-transform: uppercase;
+	text-align: center;
+	margin: 0;
+	font-family: "Passion One";
+	font-weight: 400;
+	font-size: 3em;
+	letter-spacing: 3px;
 }
-
-/*div span {
-	color: white;
-}*/
 
 #stripe {
 	background-color: white;
 	height: 30px;
 	text-align: center;
+	font-family: "Passion One";
+	color: steelblue;
 }
 
-div button {
-	background-color: white
+button {
+	background: none;
+	border: none;
 	height: 30px;
+	font-family: "Passion One";
+	font-weight: 400;
+	font-size: 1.5em;
+	color: steelblue;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+button:hover {
+	color: white;
+	background-color: steelblue;
+
 }
 
 .selected {
-	background-color: blue;
+	color: white;
+	background-color: steelblue;
+}
+
+h1:nth-of-type(2) {
+	font-size: 4em;
+	font-weight: 700;
+}
+
+#resultmessage {
+	display: inline-block;
+	width: 25%;
+	font-size: 1.2em;
+}
+
+#header {
+	transition: background 0.7s;
+	-webkit-transition: background 0.7s;
+	-moz-transition: background 0.7s;
 }

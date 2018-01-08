@@ -12,6 +12,8 @@ var resetButton = document.querySelector("#resetBtn");
 var easyButton = document.querySelector("#easyBtn");
 var hardButton = document.querySelector("#hardBtn");
 
+var hardMode = true;
+
 hardButton.classList.add("selected");
 
 resetButton.addEventListener("click", reset);
@@ -19,16 +21,24 @@ easyButton.addEventListener("click", function() {
 	this.classList.add("selected");
 	hardButton.classList.remove("selected");
 
-	// remove listeners from bottom 3 and hide them
-	
+	hardMode = false;
+	// Hide bottom 3 squares
+	for (var i = 3; i < squares.length; i++) {
+		squares[i].style.display = "none";
+	}
+	reset();
 });
 
 hardButton.addEventListener("click", function() {
 	this.classList.add("selected");
 	easyButton.classList.remove("selected");
 
-	//add listeners back to bottom 3
-	
+	hardMode = true;
+	// Reenable bottom 3 squares
+	for (var i = 3; i < squares.length; i++) {
+		squares[i].style.display = "block";
+	}
+	reset();
 });
 
 
@@ -41,16 +51,19 @@ for (var i = 0; i < squares.length; i++) {
 			winner();
 			resetButton.textContent = "PLAY AGAIN?";
 		} else {
-			//alert("Wrong");
 			this.style.backgroundColor = "#333333";
-			messageDisplay.textContent = "Try Again!";
+			messageDisplay.textContent = "Try Again";
 		}
 	});
 }
 
-// Generate number from 0-5. That number will decide which square is the winner.
+// Generate number from 0-val, where val is 3 or 6. That number will decide which square is the winner.
 function newWinningColor() {
-	return Math.floor(Math.random() * 6);
+	if (hardMode == true) {
+		return Math.floor(Math.random() * 6);
+	} else {
+		return Math.floor(Math.random() * 3);
+	}
 }
 
 function generateRandomColor() {
@@ -74,6 +87,7 @@ function winner() {
 }
 
 function reset() {
+	winningIndex = newWinningColor();
 	// Generate new colors and set each square
 	for (var i = 0; i < squares.length; i++) {
 		// Add color to each square
@@ -86,10 +100,10 @@ function reset() {
 		}
 	}
 	// Change the header color back
-	document.getElementById("header").style.backgroundColor = "#333333";
-	messageDisplay.textContent = "Pick a Color";
+	document.getElementById("header").style.backgroundColor = "steelblue";
+	messageDisplay.textContent = "";
 
 	winnerHeader.textContent = winningColor; // Display RGB string in header
-	resetButton.textContent = "New Colors";
+	resetButton.textContent = "NEW COLORS";
 
 }
